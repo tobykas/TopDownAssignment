@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     // Variables
+    private static CameraFollow instance;
     public GameObject target;
 
     //Variables privadas para matematicas
@@ -25,9 +26,26 @@ public class CameraFollow : MonoBehaviour
 
     void Awake()
     {
-        PosX = targetPosX;
-        PosY = targetPosY;
+        if (target != null)
+        {
+            PosX = target.transform.position.x;
+            PosY = target.transform.position.y;
+        }
+
         transform.position = new Vector3(PosX, PosY, -1);
+    }
+
+    private void Start()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     void MoveCamera()
@@ -38,22 +56,35 @@ public class CameraFollow : MonoBehaviour
             {
                 targetPosX = target.transform.position.x;
                 targetPosY = target.transform.position.y;
+                
+                if (targetPosX > maxRight) 
+                {
+                    PosX = maxRight;
+                }
 
-                PosX = targetPosX;
-                /*
-                if (targetPosX > maxRight && targetPosX < maxLeft) 
+                else if (targetPosX < maxLeft)
+                {
+                    PosX = maxLeft;
+                }
+                else 
                 {
                     PosX = targetPosX;
                 }
-                */
 
-                PosY = targetPosY;
-                /*
-                if (targetPosY < maxTop && targetPosY > maxBottom) 
+
+                if (targetPosY > maxTop)
+                {
+                    PosY = maxTop;
+                }
+                else if (targetPosY < maxBottom)
+                {
+                    PosY = maxBottom;
+                }
+                else 
                 {
                     PosY = targetPosY;
                 }
-                */
+                
             }
         }
 

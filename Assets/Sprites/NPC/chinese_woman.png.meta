@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6e026df6dce18644f898f278acc5443f
+guid: ec8dab2664670954fa7f60be4278dff0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -141,148 +141,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Items&Tools_0
+      name: chinese_woman_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 19
-        width: 11
-        height: 11
+        x: 1
+        y: 1
+        width: 77
+        height: 125
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 711f2a457cb3ba7488835427c8203216
-      internalID: -275848472
+      spriteID: 69a43c30b205ab84baccd3f58b44f6ae
+      internalID: 1885418218
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Items&Tools_1
+      name: chinese_woman_1
       rect:
         serializedVersion: 2
-        x: 35
-        y: 19
-        width: 11
-        height: 11
+        x: 118
+        y: 1
+        width: 77
+        height: 121
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eafe32d4b04de9842b21b12fa7bac18a
-      internalID: 1488290421
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Items&Tools_2
-      rect:
-        serializedVersion: 2
-        x: 49
-        y: 19
-        width: 14
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cd71101769f24c743bc6f6edae274458
-      internalID: 1382825127
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Items&Tools_3
-      rect:
-        serializedVersion: 2
-        x: 19
-        y: 3
-        width: 11
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63c69fb2d254ad04683ff1452f3be6ec
-      internalID: -1241547057
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Collectables
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 5
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d0df8a4a9b36c894aa4ae2dc4916b3f3
-      internalID: -1481449178
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Items&Tools_5
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 3
-        width: 10
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: abc44e2a7d2278a498dc6ce6d8de0944
-      internalID: -1336449851
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Items&Tools_6
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 0
-        width: 8
-        height: 4
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fca2ff302ccc47d44943e28442d8bd88
-      internalID: 379801505
+      spriteID: 4c821cd96e715ac4eae9d3c10f94fc33
+      internalID: 1471644548
       vertices: []
       indices: 
       edges: []
@@ -298,13 +193,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Items&Tools_2: 1382825127
-      Items&Tools_6: 379801505
-      Items&Tools_1: 1488290421
-      Items&Tools_5: -1336449851
-      Items&Tools_0: -275848472
-      Collectables: -1481449178
-      Items&Tools_3: -1241547057
+      chinese_woman_0: 1885418218
+      chinese_woman_1: 1471644548
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
