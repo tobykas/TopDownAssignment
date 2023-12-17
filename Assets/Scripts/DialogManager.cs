@@ -16,6 +16,12 @@ public class DialogManager : MonoBehaviour
     public bool isDialogActive = false;
     public bool isPlayerInRange = false;
     public bool enableShopUI = false;
+    public bool enableSellUI = false;
+
+    public ShopSystem shopSystem;
+    public SellManager sellManager;
+    public GameObject shopContainer;
+    public GameObject sellContainer;
 
     public void PressKeyToStart()
     {
@@ -23,9 +29,10 @@ public class DialogManager : MonoBehaviour
         {
             if (!isDialogActive)
             {
-                
-                ActivateDialog();
-                
+                if (shopSystem.ShopActive == false && sellManager.SellActive == false) 
+                {
+                    ActivateDialog();
+                }
             }
         }
     }
@@ -87,15 +94,31 @@ public class DialogManager : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.F))
         {
-            Debug.Log("Player wants to sell an Item");
+            enableSellUI = true;
+            if (sellManager.SellActive == false) 
+            {
+                sellManager.SellActive = true;
+                sellContainer.SetActive(true);
+                sellManager.OpenSellUI();
+                sellManager.closeButton.SetActive(true);
+                DialogPanel.SetActive(false);
+                DialogOptions.SetActive(false);
+                isDialogActive = false;
+            }
         }
 
         if (Input.GetKey(KeyCode.E))
         {
-            Debug.Log("Player wants to shop an item");
             enableShopUI = true;
-            DialogPanel.SetActive(false);
-            isDialogActive = false;
+            if (shopSystem.ShopActive == false) 
+            {
+                shopSystem.ShopActive = true;
+                shopContainer.SetActive(true);
+                shopSystem.closeButton.SetActive(true);
+                DialogPanel.SetActive(false);
+                DialogOptions.SetActive(false);
+                isDialogActive = false;
+            }
 
         }
     }
@@ -115,6 +138,23 @@ public class DialogManager : MonoBehaviour
                 PressKeyToStart();
             }
         }
+    }
+
+    public void CloseShop() 
+    {
+        enableShopUI = false;
+        shopSystem.closeButton.SetActive(false);
+        shopSystem.ShopActive = false;
+        shopContainer.SetActive(false);
+        
+    }
+
+    public void CloseSell()
+    {
+        enableSellUI = false;
+        sellManager.closeButton.SetActive(false);
+        sellManager.SellActive = false;
+        sellContainer.SetActive(false);
     }
 
 

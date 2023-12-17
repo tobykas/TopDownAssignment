@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using static UnityEditor.Progress;
 
 public class ShopSystem : MonoBehaviour
 {
+    public bool ShopActive = false;
+
     public List<Items> shopItems;
     public GameObject itemPrefab;
     public Transform itemsParent;
@@ -15,12 +16,19 @@ public class ShopSystem : MonoBehaviour
     public TMP_Text itemPrice;
     public Image itemImage;
 
+    public GameObject congratsBuyText;
+    public GameObject deniedBuyText;
+    public GameObject closeButton;
+
     private Items selectedItem;
+    [SerializeField] private PlayerManager playerManager;
+    [SerializeField] private InventoryManager inventory;
 
     // Start is called before the first frame update
     void Start()
     {
         PopulateShopUI();
+
     }
 
     void PopulateShopUI()
@@ -42,8 +50,12 @@ public class ShopSystem : MonoBehaviour
                 itemScript.itemPriceText.text = "Price: " + item.price.ToString();
                 itemScript.itemImage.sprite = item.itemSprite;
 
-                // Add a click event to the button to select the item
-                itemScript.itemButton.onClick.AddListener(() => SelectItem(item));
+                // Identify the OnButtonClick
+                itemScript.itemButton.onClick.AddListener(itemScript.OnButtonClick);
+
+                //Reference to the ShopSystem for the prefabs
+                itemScript.SetShopManager(this);
+                itemScript.SetAssociatedItem(item);
             }
             else
             {
@@ -55,22 +67,52 @@ public class ShopSystem : MonoBehaviour
 
     void Update()
     {
-        
 
     }
 
     public void SelectItem(Items item)
     {
         selectedItem = item;
+        itemName.text = item.itemName;
+        itemPrice.text = "Price: " + item.price.ToString();
+        itemImage.sprite = item.itemSprite;
     }
 
     public void BuyItem()
     {
         if (selectedItem != null)
         {
-            // Implement logic to deduct currency and add item to player's inventory
-            // Example: if (playerCurrency >= selecteditem.price) { playerInventory.AddItem(selecteditem); playerCurrency -= selecteditem.price; }
-            Debug.Log("Item Bought: " + selectedItem.itemName);
+            // Implement logic to deduct currency
+            playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+            inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+            if (playerManager != null) 
+            {
+                if (playerManager.coins >= selectedItem.price)
+                {
+                    playerManager.coins -= selectedItem.price;
+                    congratsBuyText.SetActive(true);
+                    Invoke("HideCongratsText", 4.0f);
+                    Debug.Log("Item Bought: " + selectedItem.itemName);
+                    // add item to player's inventory
+                    inventory.AddItem(selectedItem);
+                }
+                else 
+                {
+                    deniedBuyText.SetActive(true);
+                    Invoke("HideDeniedText", 4.0f);
+                    Debug.Log("The player don't have the money");
+                }
+            }
         }
+    }
+
+    public void HideCongratsText() 
+    {
+        congratsBuyText.SetActive(false);
+    }
+
+    public void HideDeniedText() 
+    {
+        deniedBuyText.SetActive(false);
     }
 }
